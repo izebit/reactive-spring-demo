@@ -1,0 +1,51 @@
+plugins {
+    id 'java'
+    id 'idea'
+    id "org.springframework.boot" version "2.0.1.RELEASE"
+}
+
+group 'ru.izebit'
+version '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+java {
+    modularity.inferModulePath = true
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(15)
+    }
+
+    tasks.withType(JavaCompile) {
+        doFirst {
+            options.compilerArgs = [
+                    '--module-path', classpath.asPath,
+            ]
+            classpath = files()
+        }
+    }
+}
+
+
+
+dependencies {
+    implementation platform("org.springframework.boot:spring-boot-dependencies:2.4.1")
+    compile "org.springframework.boot:spring-boot-starter-web"
+    compile "org.springframework.boot:spring-boot-starter-thymeleaf"
+    compile "org.springframework.boot:spring-boot-starter-webflux"
+
+
+    compile "org.springframework.boot:spring-boot-starter-data-mongodb-reactive"
+    compile "de.flapdoodle.embed:de.flapdoodle.embed.mongo:2.2.0"
+
+    compile 'org.projectlombok:lombok:1.18.16'
+    annotationProcessor 'org.projectlombok:lombok:1.18.16'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+}
+
+test {
+    useJUnitPlatform()
+}
