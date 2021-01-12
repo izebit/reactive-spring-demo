@@ -1,6 +1,7 @@
 # reactive-spring-demo
 
-This project is a demo of spring reactive features. It involves a plain web chat and backend for it. [video (in Russian language)](https://www.youtube.com/watch?v=vFxL73NpPhY)
+This project is a demo of spring reactive features. It involves a plain web chat and backend for it.   
+[video (in Russian language)](https://www.youtube.com/watch?v=vFxL73NpPhY)
 
 ## web
 
